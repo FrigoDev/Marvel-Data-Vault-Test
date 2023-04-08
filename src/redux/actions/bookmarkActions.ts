@@ -1,8 +1,8 @@
 import { Bookmark } from "../../types/ReducerBookmark";
 
 export const addBookmark = (payload: Bookmark, state: Bookmark[]) => {
-  const idSet = new Set(state.map((bookmark: Bookmark) => bookmark.id));
-  if (idSet.has(payload.id)) {
+ 
+  if (state.some((bookmark: Bookmark) => bookmark.id === payload.id)) {
     return state;
   }
   return [...state, payload];
@@ -16,8 +16,7 @@ export const deleteBookmark = (payload: Bookmark, state: Bookmark[]) => {
 };
 
 export const hideBookmark = (payload: Bookmark, state: Bookmark[]) => {
-  const idSet = new Set(state.map((bookmark: Bookmark) => bookmark.id));
-  if (idSet.has(payload.id)) {
+  if (state.some((bookmark: Bookmark) => bookmark.id === payload.id)) {
     return state;
   }
   return [...state, payload];
