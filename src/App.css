@@ -1,0 +1,135 @@
+.page-component {
+  background: var(--background-color);
+  padding: 1rem 2rem;
+  min-height: 100vh;
+  z-index: 0;
+  padding-top: 5rem;
+}
+.page-main-title {
+  font-family: var(--title-font);
+  font-size: 2.5rem;
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+.page-filter-container {
+  width: 100%;
+  display: flex;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.input-group {
+  position: relative;
+}
+.form-input {
+  background: none;
+  color: var(--primary-color);
+  font-size: 1rem;
+  padding: 0.4rem 0;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid var(--primary-color);
+}
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
+  transform: translateY(-8px) scale(0.7);
+  transform-origin: left top;
+  filter: brightness(3);
+}
+.form-label {
+  color: var(--primary-color);
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 1px;
+  transform: translateY(10px);
+  transition: transform 0.5s, color 0.3s;
+}
+.filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.filter .form-input {
+  max-width: 160px;
+}
+.search-container .input-group .form-input {
+  margin-bottom: 1rem;
+}
+.filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  vertical-align: center;
+}
+.filter-text {
+  text-align: center;
+}
+.container {
+  width: 100%;
+  margin: auto;
+}
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.column {
+  flex: 0 0 auto;
+  width: 40%;
+  margin: 1rem;
+}
+@media screen and (max-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+  .page-component {
+    padding: 1rem 0;
+    padding-top: 5rem !important;
+  }
+  .column {
+    flex: 0 0 auto;
+    width: 90%;
+  }
+  .search-container {
+    display: flex;
+    justify-content: center;
+  }
+  .page-filter-container {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 920px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .container {
+    max-width: 1320px;
+  }
+  .column {
+    flex: 0 0 auto;
+    width: 40%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+  .column {
+    flex: 0 0 auto;
+    width: 30.4%;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .container {
+    max-width: 1400px;
+  }
+}

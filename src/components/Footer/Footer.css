@@ -1,0 +1,10 @@
+.footer {
+  background: var(--fourth-color);
+  padding: 1.6rem 5%;
+  align-items: center;
+  justify-content: center;
+}
+.footer-text {
+  text-align: center;
+  color: var(--secondary-color);
+}

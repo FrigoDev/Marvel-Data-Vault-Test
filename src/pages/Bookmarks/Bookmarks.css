@@ -1,0 +1,20 @@
+.page-buttons-container {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin: 1rem 0;
+}
+.page-buttons {
+  margin-right: 1rem;
+  color: var(--secondary-color);
+  background: var(--third-color);
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.page-buttons:hover {
+  background-color: #8b0a0e;
+}
