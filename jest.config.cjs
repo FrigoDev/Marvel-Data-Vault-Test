@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-undef
 module.exports = {
   testEnvironment : "jsdom",
   setupFilesAfterEnv : [
@@ -8,6 +9,6 @@ module.exports = {
     "\\.(jpg|jpeg|png|gif)$": "jest-transform-stub"
   },
   transform: {
-    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.(js|jsx|ts|tsx)$": "ts-jest",
   }
 };
