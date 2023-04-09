@@ -7,11 +7,11 @@ export interface Bookmark {
 
 export interface BookmarkAction {
   type: string;
-  payload: Bookmark;
+  payload?: Bookmark;
 }
 
-export function isBookmark(payload: Bookmark): payload is Bookmark {
-  return (payload as Bookmark).id !== undefined;
+export function isBookmark(payload: unknown): payload is Bookmark {
+  return !(!payload || (payload as Bookmark).id === undefined);
 }
 
 export enum BookmarkActionTypes {
