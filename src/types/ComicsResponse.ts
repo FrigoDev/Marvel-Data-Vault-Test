@@ -46,8 +46,12 @@ interface Url {
 }
 
 interface SeriesSummary {
+  available?: number;
+  returned?: number;
+  collectionURI?: string;
   resourceURI?: string;
   name?: string;
+  items?: { resourceURI: string; name: string; }[];  
 }
 
 interface ComicSummary {
