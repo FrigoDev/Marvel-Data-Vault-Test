@@ -1,8 +1,8 @@
-import moment from "moment";
-
 const dateConverter = (date: string) => {
-  const dateMoment = moment(date.replace(/^-/, ""));
-  const dateFormatted = dateMoment.format("DD/MM/YYYY");
+  const dateObject = new Date(date);
+  if(!dateObject || !dateObject.getDate()) return null;
+  const dateFormatted = `${dateObject.getDate()}/${dateObject.getMonth() + 1}/${dateObject.getFullYear()}`;
   return dateFormatted;
 };
+
 export default dateConverter;
