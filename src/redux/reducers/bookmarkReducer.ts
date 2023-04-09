@@ -14,17 +14,16 @@ const bookmarkReducer = (state = initialState, action: BookmarkAction) => {
       return addBookmark(action.payload, state);
     }
     return state;
-    break;
+   
 
   case BookmarkActionTypes.DELETE_BOOKMARK:
     if (isBookmark(action.payload)) {
       return deleteBookmark(action.payload, state);
     }
     return state;
-    break;
+    
   case BookmarkActionTypes.DELETE_ALL_BOOKMARKS:
     return [];
-    break;
 
   default:
     return state;
