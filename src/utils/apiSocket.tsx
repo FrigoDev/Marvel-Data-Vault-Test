@@ -27,6 +27,8 @@ export async function getSections<Type>(
 }
 
 export async function getItemById<Type>(name: string, id: number) {
+  
+  
   const {
     data: { data: response },
   }: { data: DataWrapper<Type> } = await marvelApi.get(
@@ -40,6 +42,7 @@ export async function getSectionsFilteredByItemId<Type>(
   id: number,
   itemName: string
 ) {
+  
   const {
     data: { data: response },
   }: { data: DataWrapper<Type> } = await marvelApi.get(
