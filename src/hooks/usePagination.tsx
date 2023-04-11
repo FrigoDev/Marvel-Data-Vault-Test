@@ -1,10 +1,11 @@
-import lodash from "lodash";
+import * as lodash from "lodash";
 import { useState, useEffect, useCallback } from "react";
 import { useSearchParams, useLocation } from "react-router-dom";
 
 import type { DataContainer } from "../types/DataContainer";
 import paramsToObject from "../utils/paramsToObject";
 
+// usePagination Hook
 export default function usePagination<Type>(
   getData: (props: {
     [key: string]: string;
@@ -12,13 +13,17 @@ export default function usePagination<Type>(
   startWithParamName = "",
   otherParams = [] as string[]
 ) {
+  // React Router Hooks to get and manage the search params
   const Location = useLocation();
+  const [searchParams, setSearchparams] = useSearchParams();
+
+  // Local states to manage data, loaders, filters and errors
   const [data, setData] = useState<DataContainer<Type>>();
   const [loading, setLoading] = useState(true);
-  const [searchParams, setSearchparams] = useSearchParams();
   const [filter, setFilter] = useState<string>("");
   const [error, setError] = useState(false);
 
+  // Variable declaration to manage the search params
   const queryParams = paramsToObject(searchParams.entries());
   const nameStartsWith = queryParams.search;
   const page = (parseInt(queryParams.page) || 1) - 1;
@@ -37,30 +42,37 @@ export default function usePagination<Type>(
     ),
   } as { [key: string]: string };
 
+  // Clean undefined and empty params
   lodash.forIn(params, (value, key) => {
     if (value === undefined || value === "") {
       delete params[key];
     }
   });
 
+  // Get AsyncData function
   const getAsyncData = async () => {
     setError(false);
     setLoading(true);
     try {
-      setData(await getData(params));
+      const responseData = await getData(params);
+      setData(responseData);
     } catch {
       setError(true);
     } finally {
       setLoading(false);
     }
   };
+
+  // call getAsyncData when the component is mounted
   useEffect(() => {
     getAsyncData();
     setFilter(nameStartsWith ? nameStartsWith : "");
   }, [searchParams]);
 
+  // Debounce function to update the search params when the filter changes its value and the user stops typing for 500ms
   const debouncedFilter = useCallback(
     lodash.debounce((value) => {
+      // Update the search params only if the user is in the same page and the filter value is different from the search param
       if (
         new RegExp(Location.pathname + "$").test(window.location.pathname) &&
         (nameStartsWith !== undefined || value !== "") &&
@@ -90,26 +102,31 @@ export default function usePagination<Type>(
     [searchParams]
   );
 
+  // Call debouncedFilter when the filter changes its value
   useEffect(() => {
     debouncedFilter(filter);
   }, [filter]);
 
+  // Filter handler
   const handlefilter = (value: string) => {
     setFilter(value);
   };
 
+  // Pagination calculations
   const totalPages =
     data?.total && Math.ceil(data.total / parseInt(params.limit)) - 1;
   const currentPage =
     data?.offset && Math.ceil(data?.offset / parseInt(params.limit));
 
+  // Validate if the current page is greater than the total pages and redirect to the last page
   if (currentPage && totalPages && data?.total && currentPage > totalPages) {
     setSearchparams({
-      ...searchParams,
+      ...queryParams,
       page: (Math.ceil(data.total / parseInt(params.limit)) - 1).toString(),
     });
   }
 
+  // Navigate between pages
   const nextPage = () => {
     currentPage !== totalPages &&
       setSearchparams({
@@ -146,6 +163,7 @@ export default function usePagination<Type>(
       });
   };
 
+  // Change or remove a param from the search params
   const changeParam = (key: string, value: string) => {
     otherParams.includes(key) &&
       setSearchparams({ ...queryParams, [key]: value });
@@ -154,6 +172,8 @@ export default function usePagination<Type>(
   const removeParam = (key: string) => {
     otherParams.includes(key) && setSearchparams(lodash.omit(queryParams, key));
   };
+
+  // Return object with the data, states and functions to manage the pagination and filters
   return {
     data,
     loading,
