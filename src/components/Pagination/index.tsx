@@ -21,13 +21,13 @@ const Pagination = ({
     <div className="pagination-container">
       <ul className="pagination-ul">
         <li className="pagination-li">
-          <button className="pagination-button" onClick={firstPage}>
+          <button className="pagination-button" data-testid="first-page" onClick={firstPage}>
             <BiArrowToLeft />
           </button>
         </li>
         {currentPage >= 1 && (
           <li className="pagination-li">
-            <button className="pagination-button" onClick={prevPage}>
+            <button className="pagination-button" data-testid="prev-page" onClick={prevPage}>
               {currentPage}
             </button>
           </li>
@@ -39,13 +39,13 @@ const Pagination = ({
         </li>
         {currentPage < totalPages && (
           <li className="pagination-li">
-            <button className="pagination-button" onClick={nextPage}>
+            <button className="pagination-button" data-testid="next-page" onClick={nextPage}>
               {currentPage + 2}
             </button>
           </li>
         )}
         <li className="pagination-li">
-          <button className="pagination-button" onClick={lastPage}>
+          <button className="pagination-button" data-testid="last-page" onClick={lastPage}>
             <BiArrowToRight />
           </button>
         </li>
