@@ -1,6 +1,6 @@
-# **Marvel Data Vault - Week 8 - Applaudo Trainee Program**
+# **Marvel Data Vault Test - Week 9 - Applaudo Trainee Program**
 
-This repository is a Marvel comics data website that works with the [MarvelAPI](https://developer.marvel.com/), the website is responsive, has filters, pagination, a detailed section, I build it using reducers, React, hooks, Axios and React-router.
+This repository is a Marvel comics data website that works with the [MarvelAPI](https://developer.marvel.com/), the website is responsive, has filters, pagination, a detailed section, I build it using reducers, React, hooks, Axios and React-router, and for the week 9 the code have a jest configurations and test in the website.
 
 ## Installation
 
@@ -16,6 +16,6 @@ Then you must have node installed [node](https://nodejs.org/es/) and install the
 npm install
 ```
 
-Deploy link: [Marvel Data Vault](https://marvel-data-vault.vercel.app/)
+Deploy link: [Marvel Data Vault Test](https://marvel-data-vault-test.vercel.app/)
 
 ### Created by: **_Alejandro Román_**
