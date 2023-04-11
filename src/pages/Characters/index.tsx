@@ -30,7 +30,6 @@ const Characters = () => {
     removeParam,
     error
   } = usePagination(getCharacters, "nameStartsWith", ["comics", "stories"]);
-
   const comicsfilter = [
     { id: 0, name: "All" },
     ...(bookmark
@@ -40,7 +39,7 @@ const Characters = () => {
       name: string;
     }[]),
   ];
-  //remove undefined f
+  
   const storiesFilter = [
     { id: 0, name: "All" },
     ...(bookmark
@@ -133,7 +132,7 @@ const Characters = () => {
           </div>
         )}
       </div>
-      {data?.results?.length === 0 && (
+      {!data || !data?.results || data?.results?.length === 0 && (
         <h1 className="page-main-title">No results found</h1>
       )}
       {currentPage !== undefined &&
