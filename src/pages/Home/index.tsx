@@ -45,7 +45,7 @@ const Home = () => {
               <div className="card">
                 <img
                   className="card-image"
-                  src="https://m.media-amazon.com/images/W/IMAGERENDERING_521856-T1/images/I/91uDfBjwfFL.jpg"
+                  src="https://static1.moviewebimages.com/wordpress/wp-content/uploads/2022/09/Marvel-Comics-Characters-That-Need-to-be-in-the-MCU.jpg"
                   alt="Marvel Characters"
                 />
               </div>
